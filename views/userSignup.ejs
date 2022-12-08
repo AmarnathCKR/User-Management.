@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Sign up</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/css/signinStyle.css" />
+  </head>
+  <body>
+    <!-- Section: Design Block -->
+    <section class="text-center container" style="width: 50%">
+      <!-- Background image -->
+      <div class="p-5 bg-image" style="height: 150px"></div>
+      <!-- Background image -->
+
+      <div
+        class="card shadow-5-strong"
+        style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+        "
+      >
+        <div class="card-body py-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h3 class="fw-bold">User Sign up</h3>
+              <p class="text-danger mt-0"><%= locals.error %></p>
+              <p class="text-success mt-0"><%= locals.message %></p>
+              <form action="/signup" autocomplete="off" method="post">
+                <!-- userName -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="userName"
+                    name="userName"
+                    class="form-control"
+                    required
+                  />
+                  <label class="form-label" for="userName">Name</label>
+                  <p id="nameError" class="text-danger mt-3"></p>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="userEmail"
+                    class="form-control"
+                    name="userEmail"
+                    onkeyup="validateEmail()"
+                  />
+                  <label class="form-label" for="userEmail"
+                    >Email address</label
+                  >
+                </div>
+                <p id="emailError" class="text-danger mt-3"></p>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="userPassword"
+                    name="userPassword"
+                    class="form-control"
+                    required
+                  />
+                  <label class="form-label" for="userPassword">Password</label>
+                </div>
+
+                <!-- Submit button -->
+                <input
+                  type="submit"
+                  value="Sign up"
+                  class="btn btn-primary btn-lg btn-block mb-4 py-1"
+                />
+              </form>
+              <div
+                class="divider d-flex align-items-center justify-content-center my-4"
+              >
+                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              </div>
+
+              <a
+                class="btn btn-primary btn-lg btn-block py-1"
+                style="background-color: #3b5998"
+                href="http://127.0.0.1:3000"
+                role="button"
+              >
+                User Sign in
+              </a>
+              <a
+                class="btn btn-primary btn-lg btn-block py-1"
+                style="background-color: #55acee"
+                href="http://127.0.0.1:3000/admin/signin"
+                role="button"
+              >
+                Admin Sign in</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Design Block -->
+    <script>
+      function validateEmail() {
+        var email = document.getElementById("userEmail").value;
+        if (email.length == 0) {
+          emailError.innerHTML = "Email is required";
+          return false;
+        }
+        if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+          emailError.innerHTML = "Invalid e-mail";
+          return false;
+        }
+        emailError.innerHTML = "";
+        return true;
+      }
+    </script>
+
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+    ></script>
+    <script>
+      if ( window.history.replaceState ) {
+     window.history.replaceState( null, null, window.location.href );
+      }
+   </script>
+  </body>
+</html>

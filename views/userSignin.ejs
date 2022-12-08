@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Sign in</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/css/signinStyle.css" />
+  </head>
+  <body>
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/008/422/689/original/social-media-avatar-profile-icon-isolated-on-square-background-vector.jpg"
+              class="img-fluid"
+              alt="Phone image"
+            />
+          </div>
+          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <div
+                class="divider d-flex align-items-center justify-content-center mt-4"
+              >
+                <p class="text-center fw-bold mx-3 my-3">User Sign in</p>
+              </div>
+              <% if(locals.message){ %>
+                <p class="alert alert-success mb-3 px-3 py-2" role="alert"><%= locals.message %></p>
+              <% } %>
+              <% if(locals.invalid){ %>
+                <p class="alert alert-danger mb-3 px-3 py-2" role="alert"><%= locals.invalid %></p>
+              <% } %>
+              <form action="/" method="post">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="userEmail"
+                    name="userEmail"
+                    class="form-control form-control-lg"
+                    value="@gmail.com"
+                    required
+                  />
+                  <label class="form-label" for="userEmail"
+                    >Email address</label
+                  >
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="userPassword"
+                    name="userPassword"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                  <label class="form-label" for="userPassword">Password</label>
+                </div>
+
+                <!-- Submit button -->
+                <input type="submit" value="Sign in" class="btn btn-primary btn-lg btn-block">
+              <div
+                class="divider d-flex align-items-center justify-content-center my-4"
+              >
+                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              </div>
+
+              <a
+                class="btn btn-primary btn-lg btn-block"
+                style="background-color: #3b5998"
+                href="http://127.0.0.1:3000/signup"
+                role="button"
+              >
+                User Sign up
+              </a>
+              <a
+                class="btn btn-primary btn-lg btn-block"
+                style="background-color: #55acee"
+                href="http://127.0.0.1:3000/admin/signin"
+                role="button"
+              >
+                Admin Sign in</a
+              >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+    ></script>
+    <script>
+      if ( window.history.replaceState ) {
+     window.history.replaceState( null, null, window.location.href );
+      }
+   </script>
+  </body>
+</html>

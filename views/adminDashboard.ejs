@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container mt-5 d-flex flex-column align-items-center">
+    <h2>Admin Dashboard</h2>
+    <span>
+      <a href="/admin/logout"
+        ><button type="button" class="btn btn-danger">Log Out</button></a
+      >
+      <a href="/admin/adduser"
+        ><button class="btn btn-success">Add user</button></a
+      >
+    </span>
+    <div class="col-sm-4 justify-content-center my-3" >
+      <!-- ------------------Seach form------------------>
+          <form class="text-center">
+              
+          <input type="text" name="search" id="" class="form-control my-2" placeholder="Enter email or name">
+          
+          <button class="btn btn-info" value="search">Search</button>
+          <a href="/admin/dashboard"><button class="btn btn-dark">Show All</button></a>
+      </form>
+      <!-- ------------------From ends----------------------->
+         
+          
+      </div>
+    <div class="all-tables mt-5 d-flex flex-row justify-content-center">
+      <div class="datatable">
+        <h4 class="data text-center">Users</h4>
+        <% if(details !=null) { %>
+        <table class="table  table-hover table-bordered" style="min-width: 400px;">
+          <tr class="bg-dark text-light">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+          </tr>
+          <% details.forEach(function(item){ %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.email %></td>
+            <td><%= item.password %></td>
+            <td>
+              <a href="/admin/edit-user/?id=<%= item._id%>"
+                ><i class="fa fa-pencil fa-lg fa me-2 text-dark" aria-hidden="true"></i
+              ></a>
+              <a
+                href="/admin/delete-user/?id=<%= item._id%>"
+                onclick="return confirm('Are you sure?')"
+                ><i class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i
+              ></a>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
